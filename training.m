@@ -14,14 +14,14 @@ sizeB = [1 Inf]
 B = fscanf(fileID,formatSpec,sizeB)
 fclose(fileID);
 
-[input,PS] = mapminmax(A');
+[input,PS] = mapminmax(A');%normalisation of input values 
 expected = B';
 lr = 0.1;
 
 
 numNode1 = length(input);
 numNode2 = 10;
-numNode3 = max(expected);
+numNode3 = max(expected) + 1;
 
 w1 = rand(numNode1, numNode2);
 w2 = rand(numNode2, numNode3);
@@ -33,7 +33,7 @@ row =1;
 while row < 359
 
     %target_output initialisation
-    target_output = zeros([1 numNode3+1]);
+    target_output = zeros([1 numNode3]);
     target_output(1,expected(row,:)+1) = 1;
     
     
