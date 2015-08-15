@@ -15,6 +15,9 @@ B = fscanf(fileID,formatSpec,sizeB)
 fclose(fileID);
 
 input = A';
+%%%%%%%%%%%%%% to normalise input, simply use the code below to replace line 17, not compatible with octave
+%   [input,PS] = mapminmax(A')
+%%%%%%%%%%%%%%
 expected = B';
 lr = 0.1;
 
