@@ -32,32 +32,34 @@ row =1;
 % row = randi(569);;
 while row < 359
 
-%target_output initialisation
-target_output = zeros([1 numNode3+1]);
-target_output(1,expected(row,:)+1) = 1;
-
-
-%output calculation
-y1 = input(row,:);
-y2 = sigmoid(y1*w1);
-y3 = sigmoid(y2*w2);
-
-%error calculation
-error = target_output - y3;
-d2 = (y3 .* (1 - y3)).*error;
-d1 = (y2 .* (1 - y2)).*(d2*w2');
-
-%learning
-w2 = w2 + lr * y2'*d2;
-w1 = w1 + lr * y1'*d1;
-
-%disp(w2);
-%disp(w1);
-
-row = row + 1;
+    %target_output initialisation
+    target_output = zeros([1 numNode3+1]);
+    target_output(1,expected(row,:)+1) = 1;
+    
+    
+    %output calculation
+    y1 = input(row,:);
+    y2 = sigmoid(y1*w1);
+    y3 = sigmoid(y2*w2);
+    
+    %error calculation
+    error = target_output - y3;
+    d2 = (y3 .* (1 - y3)).*error;
+    d1 = (y2 .* (1 - y2)).*(d2*w2');
+    
+    %learning
+    w2 = w2 + lr * y2'*d2;
+    w1 = w1 + lr * y1'*d1;
+    
+    %disp(w2);
+    %disp(w1);
+    
+    row = row + 1;
 end
 
-
+weight1 = w1
+weight2 = w2
+end
 
 
 
